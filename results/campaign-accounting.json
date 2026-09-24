@@ -1,0 +1,60 @@
+{
+  "final_retained_replay": {
+    "ceiling": 100000,
+    "conservative_distinct_retained_obligation_total": 86203,
+    "direct_assignments_total": 44111,
+    "independent_oracle_obligations": 40110,
+    "linear_cpu_seconds": 0.49521057200000007,
+    "linear_direct_assignments": 37611,
+    "linear_wall_seconds": 0.4977507350004089,
+    "maximum_peak_rss_kib": 97832,
+    "outer_trace_mutation_test_partition_transport_obligations": 1982,
+    "pinned_and_message_direct_assignments": 6500,
+    "pinned_cpu_seconds": 1.150819393,
+    "pinned_wall_seconds": 1.15436960299985,
+    "within_ceiling": true
+  },
+  "measured_pilots": [
+    {
+      "cpu_seconds": 0.268879643,
+      "direct_assignments": 33614,
+      "peak_rss_kib": 95144,
+      "run": "linear-hardest-case-pilot",
+      "wall_seconds": 0.2691685460000599
+    },
+    {
+      "cpu_seconds": 0.37188127000000004,
+      "direct_assignments": 3997,
+      "peak_rss_kib": 97076,
+      "reused_assignments": 33614,
+      "run": "linear-pilot-completion",
+      "wall_seconds": 0.3759447639999962
+    },
+    {
+      "cpu_seconds": 0.12670549900000005,
+      "direct_assignments": 6500,
+      "peak_rss_kib": 93228,
+      "run": "pinned-pilot",
+      "wall_seconds": 0.1267618050001147
+    },
+    {
+      "cpu_seconds": 0.24621536700000002,
+      "direct_assignments": 0,
+      "peak_rss_kib": 93488,
+      "run": "budget-pilot",
+      "wall_seconds": 0.246586926999953
+    }
+  ],
+  "new_experimental_campaign_allowed_without_rebudgeting": false,
+  "obligation_definition": "For the retained-evidence total, count each complete field assignment; each certificate-bearing trace, false-certificate mutation, metamorphic check, unit test, retained partition/certificate/transport check; and each independent-oracle budget vector, concrete set system, schedule, or formula/inversion instance once.",
+  "repeated_execution_qualification": "Development pilots and required clean-reproduction reruns repeat some obligations. They are process verification, not additional distinct evidence, and can exceed the initial cumulative planning counter. CPU, memory, worker, and per-run limits remained satisfied. No favorable result was selected by dropping a failed retained instance.",
+  "resource_contract": {
+    "external_compute_used": false,
+    "gpu_used": false,
+    "per_runner_cpu_limit_seconds": 110,
+    "ram_ceiling_gib": 4,
+    "runner_address_space_cap_gib": 2,
+    "workers_max": 4,
+    "workers_used_per_run": 1
+  }
+}

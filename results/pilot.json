@@ -1,0 +1,143 @@
+{
+  "stage": "pilot",
+  "workers": 1,
+  "records": [
+    {
+      "case": "coordinate-5",
+      "trace": {
+        "field": 7,
+        "threshold": 3,
+        "epochs": 2,
+        "observations": [
+          {
+            "kind": "snapshot",
+            "epoch": 0,
+            "x": 1
+          },
+          {
+            "kind": "snapshot",
+            "epoch": 0,
+            "x": 2
+          },
+          {
+            "kind": "snapshot",
+            "epoch": 1,
+            "x": 3
+          },
+          {
+            "kind": "snapshot",
+            "epoch": 1,
+            "x": 4
+          },
+          {
+            "kind": "delta",
+            "before": 0,
+            "after": 1,
+            "x": 5
+          }
+        ]
+      },
+      "certificate": {
+        "kind": "hiding",
+        "polynomials": [
+          [
+            1,
+            2,
+            4
+          ],
+          [
+            1,
+            0,
+            3
+          ]
+        ]
+      },
+      "oracle": {
+        "assignment_count": 16807,
+        "conditional_support_sizes": [
+          2401,
+          2401,
+          2401,
+          2401,
+          2401,
+          2401,
+          2401
+        ],
+        "multiplicities": [
+          1
+        ],
+        "all_conditional_histograms_equal": true,
+        "all_secret_supports_pairwise_disjoint": false,
+        "verdict": "hiding"
+      }
+    },
+    {
+      "case": "coordinate-6",
+      "trace": {
+        "field": 7,
+        "threshold": 3,
+        "epochs": 2,
+        "observations": [
+          {
+            "kind": "snapshot",
+            "epoch": 0,
+            "x": 1
+          },
+          {
+            "kind": "snapshot",
+            "epoch": 0,
+            "x": 2
+          },
+          {
+            "kind": "snapshot",
+            "epoch": 1,
+            "x": 3
+          },
+          {
+            "kind": "snapshot",
+            "epoch": 1,
+            "x": 4
+          },
+          {
+            "kind": "delta",
+            "before": 0,
+            "after": 1,
+            "x": 6
+          }
+        ]
+      },
+      "certificate": {
+        "kind": "revealing",
+        "weights": [
+          4,
+          1,
+          4,
+          6,
+          1
+        ]
+      },
+      "oracle": {
+        "assignment_count": 16807,
+        "conditional_support_sizes": [
+          2401,
+          2401,
+          2401,
+          2401,
+          2401,
+          2401,
+          2401
+        ],
+        "multiplicities": [
+          1
+        ],
+        "all_conditional_histograms_equal": false,
+        "all_secret_supports_pairwise_disjoint": true,
+        "verdict": "revealing"
+      }
+    }
+  ],
+  "assignment_count": 33614,
+  "wall_seconds": 0.2691685460000599,
+  "cpu_seconds": 0.268879643,
+  "peak_rss_kib": 95144
+}

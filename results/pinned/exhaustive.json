@@ -1,0 +1,58 @@
+{
+  "capacity_partition_vectors": 2460,
+  "concrete_set_systems": 25600,
+  "constant_closed_form_checks": 300,
+  "dominating_budget_vectors": 2565,
+  "fixed_pin_closed_form_checks": 6820,
+  "horizon_inversion_checks": 220,
+  "method": "separate modular-rank implementation over every concrete small set system; brute-force interval partitions; brute-force permitted refresh subsets",
+  "revealing_set_systems": 18128,
+  "scheduler_instances": 2145,
+  "universal_frontier_families": [
+    {
+      "budget_vectors": 2187,
+      "concrete_set_systems": 16384,
+      "epochs": 4,
+      "field": 5,
+      "parties": 2,
+      "revealing_set_systems": 13648,
+      "threshold": 2
+    },
+    {
+      "budget_vectors": 64,
+      "concrete_set_systems": 512,
+      "epochs": 2,
+      "field": 5,
+      "parties": 3,
+      "revealing_set_systems": 426,
+      "threshold": 2
+    },
+    {
+      "budget_vectors": 64,
+      "concrete_set_systems": 512,
+      "epochs": 2,
+      "field": 5,
+      "parties": 3,
+      "revealing_set_systems": 186,
+      "threshold": 3
+    },
+    {
+      "budget_vectors": 125,
+      "concrete_set_systems": 4096,
+      "epochs": 2,
+      "field": 5,
+      "parties": 4,
+      "revealing_set_systems": 2874,
+      "threshold": 3
+    },
+    {
+      "budget_vectors": 125,
+      "concrete_set_systems": 4096,
+      "epochs": 2,
+      "field": 5,
+      "parties": 4,
+      "revealing_set_systems": 994,
+      "threshold": 4
+    }
+  ]
+}

@@ -1,0 +1,217 @@
+{
+  "all_documented_commands_verified": true,
+  "all_generated_inputs_match": true,
+  "commands": [
+    {
+      "command": "python reproduce.py --output replay-linear",
+      "exit_code": 0,
+      "result": {
+        "adaptive_assignment_count": 25,
+        "measurement": {
+          "child_processes": 0,
+          "cpu_seconds": 0.49521057200000007,
+          "direct_assignment_evaluations_this_run": 37611,
+          "hard_address_space_limit_bytes": 2147483648,
+          "hard_cpu_limit_seconds": 110,
+          "largest_exact_assignment_space": 16807,
+          "maximum_case_matrix_shape": [
+            64,
+            133
+          ],
+          "maximum_field_bit_width": 5,
+          "peak_rss_kib": 97832,
+          "reused_pilot_assignments": 0,
+          "wall_seconds": 0.4977507350004089,
+          "workers": 1
+        },
+        "trace_count": 711,
+        "unit_tests": 32,
+        "verdict_counts": {
+          "hiding": 375,
+          "revealing": 336
+        }
+      }
+    },
+    {
+      "command": "python reproduce_pinned.py --output replay-pinned",
+      "exit_code": 0,
+      "result": {
+        "measurement": {
+          "child_processes": 0,
+          "cpu_seconds": 1.150819393,
+          "direct_assignment_evaluations_this_run": 6500,
+          "hard_address_space_limit_bytes": 2147483648,
+          "hard_cpu_limit_seconds": 110,
+          "largest_pinned_exact_assignment_space": 3125,
+          "maximum_case_matrix_shape": [
+            328,
+            133
+          ],
+          "peak_rss_kib": 95148,
+          "wall_seconds": 1.15436960299985,
+          "workers": 1
+        },
+        "summary": {
+          "budget_validation": {
+            "certificate_checks": 88,
+            "exhaustive_partitions": 144,
+            "feasible_exact_cut_partitions": 16,
+            "mathematical_budget_cases": 20,
+            "safe_schedule_subsets": 16,
+            "schedule_subsets": 64,
+            "transport_checks": 56,
+            "variable_budget_cases": 8,
+            "variable_concrete_traces": 16
+          },
+          "exact_pinned_assignments": 6250,
+          "formula_rows": 12,
+          "independent_exhaustive_validation": {
+            "capacity_partition_vectors": 2460,
+            "concrete_set_systems": 25600,
+            "constant_closed_form_checks": 300,
+            "dominating_budget_vectors": 2565,
+            "fixed_pin_closed_form_checks": 6820,
+            "horizon_inversion_checks": 220,
+            "revealing_set_systems": 18128,
+            "scheduler_instances": 2145,
+            "universal_frontier_families": [
+              {
+                "budget_vectors": 2187,
+                "concrete_set_systems": 16384,
+                "epochs": 4,
+                "field": 5,
+                "parties": 2,
+                "revealing_set_systems": 13648,
+                "threshold": 2
+              },
+              {
+                "budget_vectors": 64,
+                "concrete_set_systems": 512,
+                "epochs": 2,
+                "field": 5,
+                "parties": 3,
+                "revealing_set_systems": 426,
+                "threshold": 2
+              },
+              {
+                "budget_vectors": 64,
+                "concrete_set_systems": 512,
+                "epochs": 2,
+                "field": 5,
+                "parties": 3,
+                "revealing_set_systems": 186,
+                "threshold": 3
+              },
+              {
+                "budget_vectors": 125,
+                "concrete_set_systems": 4096,
+                "epochs": 2,
+                "field": 5,
+                "parties": 4,
+                "revealing_set_systems": 2874,
+                "threshold": 3
+              },
+              {
+                "budget_vectors": 125,
+                "concrete_set_systems": 4096,
+                "epochs": 2,
+                "field": 5,
+                "parties": 4,
+                "revealing_set_systems": 994,
+                "threshold": 4
+              }
+            ]
+          },
+          "pinned_certificate_checks": 59,
+          "pinned_exact_trace_count": 2,
+          "pinned_trace_count": 59,
+          "pinned_verdict_counts": {
+            "hiding": 28,
+            "revealing": 31
+          },
+          "real_and_ideal_message_assignments": 250,
+          "rejected_pinned_mutations": 59
+        }
+      }
+    },
+    {
+      "command": "python -m unittest discover -s tests -v",
+      "exit_code": 0,
+      "outcome": "OK",
+      "unit_tests": 32
+    },
+    {
+      "command": "python certify.py cases/trace-example.json --output trace-certificate.json",
+      "exit_code": 0
+    },
+    {
+      "command": "python certify.py cases/trace-example.json --certificate trace-certificate.json",
+      "exit_code": 0,
+      "stdout": "VALID"
+    },
+    {
+      "command": "python certify_pinned.py cases/pinned-example.json --output pinned-certificate.json",
+      "exit_code": 0,
+      "stdout": "revealing"
+    },
+    {
+      "command": "python certify_pinned.py cases/pinned-example.json --certificate pinned-certificate.json",
+      "exit_code": 0,
+      "stdout": "accepted revealing"
+    },
+    {
+      "command": "python plan_refresh.py cases/schedule-example.json --output schedule.json",
+      "exit_code": 0,
+      "result": {
+        "cost": 2,
+        "cuts": [
+          0,
+          2,
+          4,
+          7
+        ],
+        "interval_costs": [
+          2,
+          2,
+          3
+        ],
+        "kind": "schedule",
+        "refresh_boundaries": [
+          2,
+          4
+        ]
+      }
+    },
+    {
+      "command": "python make_cases.py --output generated-traces.json",
+      "exit_code": 0,
+      "parsed_output_equals_retained_input": true
+    },
+    {
+      "command": "python make_pinned_cases.py --output generated-pinned.json",
+      "exit_code": 0,
+      "parsed_output_equals_retained_input": true
+    },
+    {
+      "command": "python make_budget_cases.py --output generated-budgets.json",
+      "exit_code": 0,
+      "parsed_output_equals_retained_input": true
+    },
+    {
+      "all_fonts_embedded": true,
+      "command": "pdflatex/bibtex8/pdflatex/pdflatex paper build",
+      "exit_code": 0,
+      "latex_or_bibtex_warnings": 0,
+      "pages": 36
+    }
+  ],
+  "conservative_distinct_retained_obligation_total": 86203,
+  "direct_field_assignments_this_final_recheck": 44111,
+  "final_recheck_is_finite_validation_not_general_proof": true,
+  "retained_independent_oracle_obligations": 40110,
+  "retained_obligation_ceiling": 100000,
+  "retained_outer_obligations": 1982,
+  "verification_date_utc": "2026-09-16",
+  "within_retained_obligation_ceiling": true,
+  "working_directory": "fresh standalone repository and fresh project copies"
+}
