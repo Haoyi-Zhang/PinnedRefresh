@@ -1,6 +1,6 @@
 {
   "child_processes": 0,
-  "cpu_seconds": 1.150819393,
+  "cpu_seconds": 1.240780901,
   "direct_assignment_evaluations_this_run": 6500,
   "hard_address_space_limit_bytes": 2147483648,
   "hard_cpu_limit_seconds": 110,
@@ -9,7 +9,7 @@
     328,
     133
   ],
-  "peak_rss_kib": 95148,
-  "wall_seconds": 1.15436960299985,
+  "peak_rss_kib": 95276,
+  "wall_seconds": 1.243535718999965,
   "workers": 1
 }

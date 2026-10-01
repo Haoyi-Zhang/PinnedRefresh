@@ -315,7 +315,7 @@
   "rejected_certificate_mutations": 711,
   "structural_checks": 577,
   "trace_count": 711,
-  "unit_test_count": 32,
+  "unit_test_count": 41,
   "verdict_counts": {
     "hiding": 375,
     "revealing": 336

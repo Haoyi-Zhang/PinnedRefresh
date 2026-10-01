@@ -1,60 +1,73 @@
 {
-  "final_retained_replay": {
-    "ceiling": 100000,
-    "conservative_distinct_retained_obligation_total": 86203,
-    "direct_assignments_total": 44111,
-    "independent_oracle_obligations": 40110,
-    "linear_cpu_seconds": 0.49521057200000007,
-    "linear_direct_assignments": 37611,
-    "linear_wall_seconds": 0.4977507350004089,
-    "maximum_peak_rss_kib": 97832,
-    "outer_trace_mutation_test_partition_transport_obligations": 1982,
-    "pinned_and_message_direct_assignments": 6500,
-    "pinned_cpu_seconds": 1.150819393,
-    "pinned_wall_seconds": 1.15436960299985,
-    "within_ceiling": true
-  },
-  "measured_pilots": [
-    {
-      "cpu_seconds": 0.268879643,
-      "direct_assignments": 33614,
-      "peak_rss_kib": 95144,
-      "run": "linear-hardest-case-pilot",
-      "wall_seconds": 0.2691685460000599
+  "final_clean_run_measurements": {
+    "combined_cpu_seconds": 1.648920629,
+    "combined_wall_seconds": 1.6550971039999922,
+    "linear": {
+      "child_processes": 0,
+      "cpu_seconds": 0.408139728,
+      "direct_assignment_evaluations_this_run": 37611,
+      "hard_address_space_limit_bytes": 2147483648,
+      "hard_cpu_limit_seconds": 110,
+      "largest_exact_assignment_space": 16807,
+      "maximum_case_matrix_shape": [
+        64,
+        133
+      ],
+      "maximum_field_bit_width": 5,
+      "peak_rss_kib": 98092,
+      "reused_pilot_assignments": 0,
+      "wall_seconds": 0.41156138500002726,
+      "workers": 1
     },
-    {
-      "cpu_seconds": 0.37188127000000004,
-      "direct_assignments": 3997,
-      "peak_rss_kib": 97076,
-      "reused_assignments": 33614,
-      "run": "linear-pilot-completion",
-      "wall_seconds": 0.3759447639999962
-    },
-    {
-      "cpu_seconds": 0.12670549900000005,
-      "direct_assignments": 6500,
-      "peak_rss_kib": 93228,
-      "run": "pinned-pilot",
-      "wall_seconds": 0.1267618050001147
-    },
-    {
-      "cpu_seconds": 0.24621536700000002,
-      "direct_assignments": 0,
-      "peak_rss_kib": 93488,
-      "run": "budget-pilot",
-      "wall_seconds": 0.246586926999953
+    "maximum_peak_rss_kib": 98092,
+    "pinned": {
+      "child_processes": 0,
+      "cpu_seconds": 1.240780901,
+      "direct_assignment_evaluations_this_run": 6500,
+      "hard_address_space_limit_bytes": 2147483648,
+      "hard_cpu_limit_seconds": 110,
+      "largest_pinned_exact_assignment_space": 3125,
+      "maximum_case_matrix_shape": [
+        328,
+        133
+      ],
+      "peak_rss_kib": 95276,
+      "wall_seconds": 1.243535718999965,
+      "workers": 1
     }
-  ],
-  "new_experimental_campaign_allowed_without_rebudgeting": false,
-  "obligation_definition": "For the retained-evidence total, count each complete field assignment; each certificate-bearing trace, false-certificate mutation, metamorphic check, unit test, retained partition/certificate/transport check; and each independent-oracle budget vector, concrete set system, schedule, or formula/inversion instance once.",
-  "repeated_execution_qualification": "Development pilots and required clean-reproduction reruns repeat some obligations. They are process verification, not additional distinct evidence, and can exceed the initial cumulative planning counter. CPU, memory, worker, and per-run limits remained satisfied. No favorable result was selected by dropping a failed retained instance.",
-  "resource_contract": {
-    "external_compute_used": false,
-    "gpu_used": false,
-    "per_runner_cpu_limit_seconds": 110,
-    "ram_ceiling_gib": 4,
-    "runner_address_space_cap_gib": 2,
-    "workers_max": 4,
-    "workers_used_per_run": 1
+  },
+  "interpretation": "Finite validation and accounting only; neither total nor runtime is a proof of the general theorem or a deployment benchmark.",
+  "obligation_definition": "Count each complete field assignment and each retained concrete trace, rejected certificate mutation, metamorphic check, unit test, interval-partition visit, budget certificate/transport check, budget-binding control, or independent-oracle instance once. Repeated clean reruns are process qualification, not new scientific cases.",
+  "retained_evidence": {
+    "ceiling": 100000,
+    "conservative_distinct_retained_obligation_total": 92035,
+    "direct_complete_field_assignments": 44111,
+    "independent_oracle_components": {
+      "capacity_partition_vectors": 2460,
+      "constant_formula_checks": 300,
+      "fixed_pin_rank_budget_vectors": 253,
+      "fixed_pin_rank_concrete_systems": 5120,
+      "fixed_pin_same_expression_regressions": 6820,
+      "horizon_inversion_checks": 220,
+      "mandatory_count_scheduler_instances": 505,
+      "optional_forbidden_scheduler_instances": 2145,
+      "single_trace_budget_separation_regression": 1,
+      "threshold_envelope_regressions": 4,
+      "varying_pin_budget_vectors": 2565,
+      "varying_pin_concrete_systems": 25600
+    },
+    "independent_oracle_total": 45993,
+    "outer_total": 1931,
+    "outer_trace_mutation_test_partition_transport_components": {
+      "budget_binding_negative_controls": 3,
+      "budget_certificate_checks": 88,
+      "concrete_traces": 850,
+      "mandatory_schedule_corpus_subset": 1,
+      "metamorphic_checks": 42,
+      "rejected_false_certificate_mutations": 770,
+      "retained_interval_partition_visits": 80,
+      "transport_checks": 56,
+      "unit_tests": 41
+    }
   }
 }

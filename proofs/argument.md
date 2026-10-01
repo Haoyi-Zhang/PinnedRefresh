@@ -90,7 +90,7 @@ This holds for every polynomial-valid pin-preserving update rule and any samplin
 
 For cooperative recovery, k distinct current shares always interpolate. Requiring recovery at the uniform initial slot with at most u_rec unavailable holders is possible exactly when k<=n-u_rec. Necessity follows because fewer than k initial shares have identical distributions under every secret: the root polynomial construction supplies a secret-shifting bijection. This does not lower-bound schemes with extra recovery state, nor does it handle withholding or incorrect replies.
 
-Thus both properties require Gamma<k<=n-u_rec. An integer k>=2 exists exactly when n-u_rec>=2 and Gamma<n-u_rec.
+Thus both properties require Gamma<k<=n-u_rec together with the standing k>=2 convention. Equivalently, the legal integer set begins at max(2,Gamma+1) and is nonempty exactly when that value is at most n-u_rec.
 
 For constant b and u, L_e=min(eb,u) and R_e=min((T-1-e)b,u). A central pivot maximizes their sum, giving
 
@@ -112,11 +112,15 @@ Because Gamma equals the minimum partition width, it is monotone in every budget
 
 Thus an integer margin m=k-1-Gamma tolerates any collection of budget increases of total L1 size at most m. This is a deterministic worst-case margin, not a probability.
 
-The smallest secret threshold is Gamma+1. Combining this with cooperative recovery yields an exact threshold envelope:
+The standing model requires k>=2. Hence the smallest legal secret threshold is
 
-    Gamma+1 <= k <= n-u_rec.
+    k_min=max(2,Gamma+1).
 
-It is nonempty exactly when Gamma+1<=n-u_rec (and n-u_rec>=2 under the standing threshold convention).
+Combining this with cooperative recovery yields the exact integer set
+
+    max(2,Gamma+1) <= k <= n-u_rec.
+
+It is feasible exactly when the lower endpoint does not exceed the upper endpoint; otherwise the set is empty. In particular, zero exposure gives Gamma=0 but never recommends k=1.
 
 For constant positive b, the three branches of
 
@@ -137,13 +141,15 @@ As a heterogeneous example, b=(1,3,0,2,1) and u=(2,1,3,1) give L=(0,1,1,1,1), R=
 
 ## 6. Minimum-cost robust offline schedule
 
-At each internal cut j, refreshing costs a_j>=0 and has pin budget u_{j-1}. A skipped refresh preserves the entire polynomial, equivalent to pinning all n coordinates. For a selected set R, define u^R_{j-1}=u_{j-1} if j is selected and n otherwise. The frontier proves that R is universally safe iff Gamma(b,u^R)<k. For necessity, strengthen the lower witness's skipped-boundary pin sets to all of X. Every interpolation equality path remains valid.
+At each internal boundary j, refreshing costs a_j>=0 and has pin budget u_{j-1}. A skipped refresh preserves the entire polynomial, equivalent to pinning all n coordinates. For an actual refresh set R, define u^R_{j-1}=u_{j-1} when j is in R and n otherwise. The frontier proves that R is universally safe iff Gamma(b,u^R)<k. For necessity, strengthen the lower witness's skipped-boundary pin sets to all of X; every interpolation equality path remains valid.
 
-Create edges a->z with w(a,z)<k, using the original budgets. Entering internal cut z costs a_z; entering T costs zero. A path gives a safe schedule because its constant-on-interval root certificates also tolerate skipped internal refreshes.
+Without policy constraints, create edges a->z with w(a,z)<k. Entering internal cut z costs a_z; entering T costs zero. A path's internal cuts Q define a safe actual schedule R=Q. Conversely, any safe R has a width-below-k partition for u^R. Its internal cuts Q satisfy Q subseteq R because a cut at a skipped boundary would contribute n>=k. Changing every refresh in R minus Q into a skipped boundary leaves that same partition valid. Nonnegative costs make Q no more expensive than R, so a shortest path minimizes cost. If no path exists, the all-refresh capacity is at least k and its transport witness survives any additional skipped boundaries.
 
-Conversely, any safe schedule R has a width-below-k partition for u^R. Such a partition cannot cut a skipped boundary, whose boundary charge alone is n>=k. Its internal cuts therefore form a subset of R and a path in the original edge graph. Nonnegative costs make that path no more expensive than R. A shortest path consequently minimizes cost over all universally safe schedules, including schedules with unnecessary extra refreshes.
+With allowed set A and mandatory set M subseteq A, the actual schedule and the certificate cuts must be distinguished. A feasible actual set satisfies M subseteq R subseteq A, while the certificate needs only Q subseteq R. Prepay sum_{j in M} a_j, exclude cuts outside A, do not force the path to visit M, and charge only a_j for entered nonmandatory cuts. Return R=M union Q. A path Q is safe because every one of its cuts is refreshed in R. Conversely, a safe feasible R has some Q subseteq R; replacing R by M union Q preserves the partition, remains feasible, and cannot increase cost. This proves optimality.
 
-If no path exists, the all-refresh capacity is at least k. Its central interpolation witness remains valid after any extra boundaries are changed to full pins. This is an impossibility witness for every subset schedule. It is not correct in general to reject a schedule solely because its exact-cut partition is too wide: a coarser partition may certify that schedule. The minimum-cost equivalence uses the subset argument, not that false classification.
+A refresh-count cap must count |R|=|M union Q|=|M|+|Q minus M|, not the number of path vertices. A layered graph can track that quantity. Failure under such a cap proves that no policy-feasible actual subset has a safe partition; it need not yield one common transport witness unless even refreshing every allowed boundary is unsafe.
+
+The smallest regression is over F_7 with n=5, k=4, b=(2,1), u=(2), and the unique boundary mandatory at charge one. The actual R={1} has Gamma=3. Its certificate uses Q empty and the one interval of weight three. Forcing the mandatory boundary into Q would instead create weights four and three and incorrectly reject a safe schedule.
 
 ## 7. Passive protocol and full refresh-message simulation
 
@@ -163,4 +169,10 @@ Finally, a public classical transcript alone cannot certify deletion of freely c
 
 ## 8. What executable checks add
 
-The certificate checker evaluates polynomials or coefficient-basis identities without the producer's elimination. The direct oracles enumerate actual random choices and compare secret-conditioned histograms. The transport checker follows pins and checks Lagrange coefficients. The simulator control enumerates real and ideal local tuples. Each tests different mistakes, but they share an authored model and are not independent scientific reviewers. None of these bounded computations proves the general quantifiers above or resolves novelty against unread literature.
+The certificate checker evaluates polynomials or coefficient-basis identities without the producer's elimination. The direct oracles enumerate actual random choices and compare secret-conditioned histograms. The trace-level transport helper follows pins and checks Lagrange coefficients only; the budget-level wrapper additionally binds the trace to the original b, u, threshold/capacity pair, and explicit coordinate pool. Controlled pin-count, exposure-count, and threshold mutations must be rejected there even when the underlying algebraic path remains valid.
+
+The small public-budget oracle first rank-tests each concrete set system, then applies a componentwise prefix OR to exact count vectors. Its claim is existential: a revealing trace exists within a budget iff Gamma>=k. It does not classify every trace by its dominating budget. The F_5 trace C_0=C_1=O_0={1} with n=3 and k=2 is a retained hiding regression (h_0=h_1=1-Z) even though the count budget has Gamma=2. Scheduler comparison enumerates actual refresh subsets and evaluates Gamma(b,u^R), including mandatory and count-cap constraints.
+
+The 6,820 fixed-pin items compare the helper against the same displayed formula and are implementation-consistency regressions, not an independent secrecy oracle. A separate local-rank enumeration holds one identical actual O at every boundary and compares revealing existence with the fixed-pin formula on 5,120 concrete systems and 253 budgets. The horizon inversion regression covers only b=1..4, u=0..4, k=2..12 (220 tuples), with a bounded scan through T=12; no all-supported-input claim is made.
+
+The simulator control enumerates real and ideal local tuples. Each check targets a different mistake, but all share an authored model and are not independent scientific reviewers. None of these bounded computations proves the general quantifiers above or resolves novelty against unread literature.
