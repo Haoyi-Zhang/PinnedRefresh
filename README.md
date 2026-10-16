@@ -96,12 +96,16 @@ the mathematical recurrence's `O(T^2)` implementation is not claimed here.
 The reference-audit, literature-calibration, and external-resources files retain
 source identities, access depths, and limits; they are not independent review.
 
-## Optional vector figure
+## Optional vector figures
 
 ```sh
 python -m pip install -r requirements-figures.txt
 python -B scripts/plot_figures.py
+python -B plot_schematics.py --outdir figures
 ```
+
+The schematic generator writes the three-slot equality diagram. For a sibling
+paper build, use `--outdir ../paper/figures` before the documented TeX passes.
 
 This reads `results/pinned/cadence.csv`, checks the retained integer formulas,
 and writes vector `figures/cadence.pdf` without rerunning experiments.
