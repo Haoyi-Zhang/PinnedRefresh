@@ -19,6 +19,12 @@ network, solver, credentials, manuscript directory, or hidden cache.
 The executable contract supports prime fields and uses exact integers;
 the written argument permits arbitrary finite fields.
 
+For `m` constraint/observation rows, the ambient matrix has
+`1 + T*(k-1)` columns. The hiding solve uses `m` by `T*(k-1)` coefficients;
+the revealing solve transposes the ambient matrix and uses `1 + T*(k-1)`
+by `m` coefficients. The retained maximum ambient shape, recorded as
+`maximum_case_matrix_shape`, is 328 by 133; its revealing solve is 133 by 328.
+
 Run from this repository root, with empty or absent output directories:
 
 ```sh
